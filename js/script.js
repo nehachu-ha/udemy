@@ -113,3 +113,37 @@
 // console.log(isChecked || !isClose);
 
 // console.log(2*4 != 8);
+
+if (4 == 9) {
+    console.log('ok!');
+} else {
+console.log('error');
+}
+
+const num = 50;
+// if (num < 49) {
+//     console.log('error');
+// } else if (num > 100) {
+//  console.log ('too mach');
+// } else {
+//     console.log('ok!');
+// }
+
+// (num === 50) ? console.log('ok!') : console.log('error'); // тернарный оператор
+//  4 + 4; // бинарный аргумент
+//  +'4';//унарный аргумент
+
+ switch (num) {
+     case 49: 
+        console.log('error');
+        break;
+      case 100:
+          console.log ('too mach');
+          break;
+         case 50:
+            console.log('ok!');
+            break;
+            default:
+                console.log('another time!');
+                break;
+ };

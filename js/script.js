@@ -114,13 +114,13 @@
 
 // console.log(2*4 != 8);
 
-if (4 == 9) {
-    console.log('ok!');
-} else {
-console.log('error');
-}
+// if (4 == 9) {
+//     console.log('ok!');
+// } else {
+// console.log('error');
+// }
 
-const num = 50;
+// const num = 50;
 // if (num < 49) {
 //     console.log('error');
 // } else if (num > 100) {
@@ -133,17 +133,42 @@ const num = 50;
 //  4 + 4; // бинарный аргумент
 //  +'4';//унарный аргумент
 
- switch (num) {
-     case 49: 
-        console.log('error');
-        break;
-      case 100:
-          console.log ('too mach');
-          break;
-         case 50:
-            console.log('ok!');
-            break;
-            default:
-                console.log('another time!');
-                break;
- };
+//  switch (num) {
+//      case 49: 
+//         console.log('error');
+//         break;
+//       case 100:
+//           console.log ('too mach');
+//           break;
+//          case 50:
+//             console.log('ok!');
+//             break;
+//             default:
+//                 console.log('another time!');
+//                 break;
+//  };
+
+let num = 50;
+// while (num <= 55) {
+//     console.log(num);
+//     num++;
+// }
+
+// do {
+//     console.log(num);
+//     num++;  
+// }
+// while (num < 55);
+
+for (let i = 1; i < 8; i++) {
+    console.log(num);
+     num++;
+}
+
+for (let i = 1; i < 8; i++) {
+    if (i === 6) {
+        // break;
+        continue;
+    }
+    console.log(i);
+}

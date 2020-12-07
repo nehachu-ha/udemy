@@ -264,3 +264,79 @@
 // const test = '12.2 px';
 // console.log(parseInt(test)); // переводит число в другую систему исчисления (здесь строку приводит к числу округленное)
 // console.log(parseFloat(test)); // берет строку и возвращает в 10тичном варианте (здесь строку приводит к числу неокругленное)
+
+
+
+//callback-функции
+// function first () {
+//     //do smth
+//     setTimeout (function () {
+//         console.log(1);
+//     }, 500);
+// }
+
+// function second () {
+//     console.log(2);
+// }
+
+// first();
+// second();
+
+// function learnJS (lang, callback) {
+//     console.log(`я учу: ${lang}`);
+//     callback();
+// }
+// // learnJS('JavaScript', function() {    // передача анонимной функции, которая исчезнет после выполнения
+// // console.log('я прошел этот урок')
+// // });
+
+// function done () {
+//     console.log('я прошел этот урок');
+// }
+// learnJS('JavaScript', done);  // вызов коллбэк функции без круглых скобок, т.К. здесь мы  передаем функцию как аргумент, а выполнится она внутри другой функции в вызове callback ;
+
+
+
+//методы объектов
+
+// const obj = new Object(); // еще один способ создания объектов
+
+const options = {
+    name: 'test',
+    width: 1024,
+    height: 1024,
+    colors: {
+        border: 'black',
+        bg: 'red'
+    },
+    makeTest: function () {   // создание метода объекта
+        console.log('Test');
+    }
+};
+
+options.makeTest(); //вызов метода объекта
+// // console.log(options.name);
+
+// // delete options.name; //  оператор удаляет какое-то свойство объекта
+// // console.log(options);
+// let counter = 0; //подсчет количества свойств обекта
+// for (let key in options) { // цикл который перебирает все ключевые значения свойства объекта; 
+//     if (typeof(options[key]) === 'object') {   //цикл который перебирает все ключевые значения свойства ВЛОЖЕННОГО объекта; 
+//         for (let i in options[key]) {
+//             console.log(`свойство ${i} имеет значение ${options[key][i]}`); 
+//             counter++;
+//         }
+//     } else {
+//      console.log(`свойство ${key} имеет значение ${options[key]}`);  //будем получать значение свойства
+//      counter++;
+//     }
+// }
+// console.log(counter);
+// // console.log(options['colors']['border']); //двойное обращение к свойству обекта
+
+
+// console.log(Object.keys(options)); //ЭТОТ МЕТОД БЕРЕТ НАШ ОБЪЕКТ и на его основании создает массив в котором все элементы это это ключи из пары ключ-значение
+// console.log(Object.keys(options).length);  // получаем количество элементов? которые находтся в массиве из ключей
+
+const {border, bg} = options.colors; // деструктуризация объекта , те мы вытащили свойства из вложенного объекта в качестве отдельной переменной
+console.log(border);

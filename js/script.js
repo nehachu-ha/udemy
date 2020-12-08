@@ -385,3 +385,92 @@
 // arr.sort(compareNum);
 // console.log(arr);
 
+
+
+// передача по ссылке или по значению
+// let a = 5;
+// let b = a;
+// b = b + 5;
+// console.log(b);
+// console.log(a);
+
+// const obj = {
+//     a: 5,
+//     b: 1
+// };
+// const copy = obj; //сюда кладется ссылка 
+// copy.a = 10;
+// console.log(copy);
+// console.log(obj);
+
+// function copy (mainObj) {
+//     let objCopy = {};
+//     let key;
+//     for (key in mainObj) {
+//         objCopy[key] = mainObj[key]; //создание копии объекта
+//     }
+//     return objCopy;
+// }
+
+// const numbers  = {
+//     a: 2,
+//     b: 5,
+//     c: {
+//         x: 7,
+//         y: 4
+//     }
+// };
+
+// const newNumbers = copy(numbers); // клонирование объекта с помощью функции
+// newNumbers.a = 10;
+
+
+// // console.log(newNumbers);
+// // console.log(numbers);
+
+// newNumbers.c.x = 10;
+// // console.log(newNumbers);
+
+// const add = {
+//     d: 17,
+//     e: 20
+// };
+
+// console.log(Object.assign(numbers, add));
+
+// const clone = Object.assign({}, add);
+// clone.d = 20; 
+// // console.log(add);
+// // console.log(clone);
+
+// const oldArr = ['a', 'b', 'c'];  //создание поверхностной копии массива
+// const newArr = oldArr.slice(); //метод для копирования всего массиваб а в аргументах можно задать сколько элементов копировать
+// // const newArr = oldArr;  // если оставить так, то передается просто ссылка на этот массив
+// newArr[1] = 'fghjhghjkjh';
+// console.log(newArr);
+// console.log(oldArr);
+
+
+// const video = ['youtube', 'vimeo', 'rutube'],
+//       blogs = ['wordpress', 'livejournal', 'blogger'],
+//       internet = [...video, ...blogs, 'vk', 'facebook'];  
+// console.log(internet);
+
+// function log (a, b, c) {
+//     console.log(a);
+//     console.log(b);
+//     console.log(c);
+// }
+// const num = [2, 5, 7];
+
+// log(...num);   //т.е. спред оператор зазложит массив на 3 отдельных элемента и возьмет их в качестве 3 аргументов в функцию
+
+
+// const array = ['a', 'b'];
+// const newArray = [...array];
+
+// const q = {
+//     one: 1,
+//     two: 2
+// };
+// const newObj = {...q};

@@ -96,6 +96,9 @@ wrapper.append(div); // добавляет элемент в конец роди
 
 // div.innerHTML = 'hello'; // добавляет текст и html структуру
 // div.innerHTML = '<h2>hello</h2>'; //добавляем как строку
+// div.innerHTML = ''; // очистить элемент
+//console.log(div.innerHTML); //позволяет получать HTMLэлементы со страницы в виде строки
+
 
 // div.textContent = 'hello'; //добавляет только текст
 

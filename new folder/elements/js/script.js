@@ -2,10 +2,10 @@
 
 //методы для получения элементов со страницы
 
-const box = document.getElementById('box');
+// const box = document.getElementById('box');
 // console.log(box);
 
-const btns = document.getElementsByTagName('button');
+// const btns = document.getElementsByTagName('button');
 // console.log(btns);
 
 // const btns = document.getElementsByTagName('button')[1]; // получаем только одну кнопку по индексу в коллекции(псевдомассиве)
@@ -17,16 +17,16 @@ const btns = document.getElementsByTagName('button');
 //если на странице находится только один элемент button, но его нашли с помощью метода getElementsByTagName() , то он все равно выведется в коллекции, 
 //в которой содержится только один элемент. обращаться к такому элементу необходимо через индекс, тк без индекса мы будем обращаться ко всему псевдомассиву
 
-const circles = document.getElementsByClassName('circle');
+// const circles = document.getElementsByClassName('circle');
 // console.log(circles);
 
-const hearts = document.querySelectorAll('.heart'); //коллекция, полученная таким образом имееи один метод forEach
+// const hearts = document.querySelectorAll('.heart'); //коллекция, полученная таким образом имееи один метод forEach
 // console.log(hearts);
 // hearts.forEach(item =>{
 //     console.log(item); 
 // });
 
-const oneHeart = document.querySelector('.heart'); // получает только один первый элемент со страницы
+// const oneHeart = document.querySelector('.heart'); // получает только один первый элемент со страницы
 // console.log(oneHeart);
 
 
@@ -47,8 +47,8 @@ const oneHeart = document.querySelector('.heart'); // получает толь�
 // const num = 500;
 // box.style.cssText = `background-color: green; width: ${num}px`; // очень полезно, если мы определнные параметры расчитываем динамически
 
-btns[1].style.borderRadius = '100%';
-circles[0].style.backgroundColor = 'red';
+// btns[1].style.borderRadius = '100%';
+// circles[0].style.backgroundColor = 'red';
 
 //используются для того, чтобы назначить свойство для нескольких элементов сразу; 
 
@@ -56,26 +56,26 @@ circles[0].style.backgroundColor = 'red';
 //     hearts[i].style.backgroundColor = 'blue';
 // }
 
-hearts.forEach(item => {
-    item.style.backgroundColor = 'blue';
-});
+// hearts.forEach(item => {
+//     item.style.backgroundColor = 'blue';
+// });
 
 
-const div = document.createElement('div'); // создание нового элемента, но он существует только внутри JS;
+// const div = document.createElement('div'); // создание нового элемента, но он существует только внутри JS;
 
 // const text = document.createTextNode('здесь был я');   //создание текстовых узлов те элементов без оболочки тега  
 
-div.classList.add('black'); // добавляем класс из css; //пока нет на странице, существует в JS
+// div.classList.add('black'); // добавляем класс из css; //пока нет на странице, существует в JS
 
 // document.body.append(div);//добавляем элемент в конец body. в любой другой родитель
 
 //если переменная используется только 1 раз, не обязательно ее отдельно выносить
-// document.querySelector('.wrapper').append(div);
-const wrapper = document.querySelector('.wrapper');
+// // document.querySelector('.wrapper').append(div);
+// const wrapper = document.querySelector('.wrapper');
 
 //новые методы
 
-wrapper.append(div); // добавляет элемент в конец родителя
+// wrapper.append(div); // добавляет элемент в конец родителя
 // wrapper.prepend(div); // дjбавляет элемент в начало родителя
 // hearts[0].before(div); // добавляет div перед hearts[0]
 // hearts[0].after(div); //  добавляет div после hearts[0]

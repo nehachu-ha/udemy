@@ -94,4 +94,60 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     setClock('.timer', deadline);
 
+    //Modal
+
+    const modalTrigger = document.querySelectorAll('[data-modal]');
+    const modal = document.querySelector('.modal');
+    const modalCloseBtn = document.querySelector('[data-close]');
+
+    function openModal () {
+        modal.classList.add('show');
+        modal.classList.remove('hide');
+        // modal.classList.toggle('show'); // можно испольховать вместо add и remove;
+        document.body.style.overflow = 'hidden'; // запрещаем прокрутку страницы при открытом модальном окне;
+        clearInterval(setTimeoutId); //отменяем открытие модального окна, если пользователь его уже открывал
+    }
+
+    modalTrigger.forEach((item) => {
+        item.addEventListener('click', openModal);
+    });
+
+    function closeModal () {
+        modal.classList.add('hide');
+        modal.classList.remove('show');
+        document.body.style.overflow = ''; // восстанавливаем прокрутку при закрытом модальном окне, оставляем пустые кавычки, тогда браузер сам определяет что нужно сделать
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal); // восстанавливаем прокрутку при закрытом модальном окне, оставляем пустые кавычки, тогда браузер сам определяет что нужно сделать
+
+    modal.addEventListener('click', (e) => { //модальное окно закрывается при клике на подложку
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => { //закрывается модальное окно при нажатии на ESC
+        if (e.code === "Escape" && modal.classList.contains('show')) {    // проверяем содержит ли собитие е код Escape и проверяем открыто ли окно
+            closeModal();
+        }
+    });
+
+    const setTimeoutId = setInterval(openModal, 5000); // создаем таймер, чтобы модальное окно открылось самомтоятельно через какое-то время
+
+    function showModalByScroll () {
+        //pageYOffset - показывает насколько прокручерн документ по оси у; 
+        //clientHeight - показывает сколько пикселей сечас видно пользователю;
+        //scrollHeight -  полный сайт 
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) { // то узнаем прокручена ли страница до конца;
+            openModal();
+            window.removeEventListener('scroll', showModalByScroll); // удаляем обработчик события после того как один раз уже открылось модальное окно, чтобы не открывалось повторно
+        }
+    }
+
+    window.addEventListener('scroll', showModalByScroll);// вешаем обработчик события на скролл
+       
+    
+
+
+
 });

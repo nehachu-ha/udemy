@@ -149,12 +149,13 @@ document.addEventListener('DOMContentLoaded', () => {
     //используем классы для карточек
 
     class MenuCard {
-        constructor(src, alt, title, description, price, parentSelector) {
+        constructor(src, alt, title, description, price, parentSelector, ...classes) { //с помощью rest оператора добавляем классы для div
             this.src = src;
             this.alt = alt;
             this.title = title;
             this.description = description;
             this.price = price;
+            this.classes = classes; //это будет массив
             this.parent = document.querySelector(parentSelector); //ищем элемент после которого помещать в разметку element;
             this.transfer = 27;
             this.changeToUAH();
@@ -166,16 +167,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         render() { //классическое название метода, чтобы сформировать верстку
             const element = document.createElement('div');
+            if (this.classes.length === 0) { // назначаем параметры по умолчению для массива полученного с помощью rest оператора
+                this.element = 'menu__item'; //назначаем дефолтный класс
+                element.classList.add(this.element);
+            } else {
+                this.classes.forEach(className => element.classList.add(className)); //перебираем массив, внутри forEach с помощью стрелочной функции говорим, что 
+                //в качестве аргумента она принимает имя класса и добавляет element указанный класс
+            }
+          
             element.innerHTML = `
-            <div class="menu__item">
-                <img src=${this.src} alt=${this.alt}>
-                <h3 class="menu__item-subtitle">${this.title}</h3>
-                <div class="menu__item-descr">${this.description}</div>
-                <div class="menu__item-divider"></div>
-                <div class="menu__item-price">
-                    <div class="menu__item-cost">Цена:</div>
-                    <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
-                </div>
+            <img src=${this.src} alt=${this.alt}>
+            <h3 class="menu__item-subtitle">${this.title}</h3>
+            <div class="menu__item-descr">${this.description}</div>
+            <div class="menu__item-divider"></div>
+            <div class="menu__item-price">
+                <div class="menu__item-cost">Цена:</div>
+                <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
             </div>
             `;
             this.parent.append(element);
@@ -193,7 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Меню "Фитнес"',
         'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
         9,
-        '.menu .container'
+        '.menu .container',
+        
     ).render();
 
     new MenuCard( // аргументы копируем из HTML
@@ -202,7 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Меню "Премиум"',
         'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
         14,
-        '.menu .container'
+        '.menu .container',
+        'menu__item'
     ).render();
 
     new MenuCard( // аргументы копируем из HTML
@@ -211,7 +220,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Меню "Постное"',
         'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.',
         12,
-        '.menu .container'
+        '.menu .container',
+        'menu__item'
     ).render();
 
 

@@ -51,4 +51,4 @@ const clone = JSON.parse(JSON.stringify(persone));
 
 clone.parent.mom = 'Ann'; //вносим изменения в клонированный объект
 console.log(persone);
-console.log(clone);
+console.log(clone);  

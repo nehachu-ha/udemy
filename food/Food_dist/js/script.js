@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    //Tabs
+//Tabs
 
     const tabs = document.querySelectorAll('.tabheader__item');
     const tabsContent = document.querySelectorAll('.tabcontent');
@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    //Timer
+//Timer
 
-    const deadline = '2021-01-20'; //создаем переменную с дедлайном
+    const deadline = '2021-05-20'; //создаем переменную с дедлайном
 
     function gerTimerRemaining (endtime) { // создаем функцию, которая будеи определять разницу между дедлайном и текущим временем
 
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     setClock('.timer', deadline);
 
-    //Modal
+//Modal
 
     const modalTrigger = document.querySelectorAll('[data-modal]');
     const modal = document.querySelector('.modal');
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.remove('hide');
         // modal.classList.toggle('show'); // можно испольховать вместо add и remove;
         document.body.style.overflow = 'hidden'; // запрещаем прокрутку страницы при открытом модальном окне;
-        clearInterval(setTimeoutId); //отменяем открытие модального окна, если пользователь его уже открывал
+        // clearInterval(setTimeoutId); //отменяем открытие модального окна, если пользователь его уже открывал
     }
 
     modalTrigger.forEach((item) => {
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', showModalByScroll);// вешаем обработчик события на скролл
        
-    //используем классы для карточек
+//используем классы для карточек
 
     class MenuCard {
         constructor(src, alt, title, description, price, parentSelector, ...classes) { //с помощью rest оператора добавляем классы для div
@@ -225,5 +225,107 @@ document.addEventListener('DOMContentLoaded', () => {
     ).render();
 
 
+//Forms
+    
+    const forms = document.querySelectorAll('form');
+    
+    //создаем объект, который содержит список ответов пользователю после загрузки данных на сервер (лучше указывать позитивные и негативные сценарии)
+    const message = {
+        loading: 'Загрузка.',
+        success: 'Спасибо! Скоро с вами свяжемся',
+        failur: 'Что-то пошло не так...'
+    };
+
+    //под каждую форму нужно подвязать функцию
+    forms.forEach(item => {
+        postData(item);
+    });
+
+    //создаем функцию, которая отвечает за постинг данных
+    function postData(form) {
+        form.addEventListener('submit', (e) => {   //submit срабатывает каждый раз, когда мы пытаемся отправить какую-то формупри клике мыши или нажатии на энтер
+            e.preventDefault(); // сбрасываем стандароное поведение браузера
+
+            //создаем еще один блок, в котом будет выводиться сообщение для пользовател, которое будет динамически появляться на странице
+            const statusMessage = document.createElement('div');
+            statusMessage.classList.add('status');
+            statusMessage.textContent = message.loading; // при срабатывании submit сразу будет воявляться сообщение о загрузке
+            form.append(statusMessage);
+
+            const request = new XMLHttpRequest();
+            request.open('POST', 'server.php');
+            
+            //нужно сделать так, чтобы все данные, которые пользователь заполнил в форме , мы получили в JS и уже могли отправить на сервер 
+            //и самый простой способ  - это использовать объект formData. Нам не всегда нужно передавать в формате JSON, ориентируясь на то как работаем с бэкэндом
+            //formData - это специальный объект, который позволяет с определнной формы быстро сформировать данные которые заполнил пользователь, в формате ключ-значение
+
+            //request.setRequestHeader('Content-type', 'multipart/form-data');
+            const formData = new FormData(form); //внутрь помещаем ту форму из которой нам нужно забрать данные
+            // ВАжно!! в HTML, если подразумевается что данные из формы будут уходить на сервер, в input обязательно указывать атрибут name
+
+            //отправка данных на сервер
+            request.send(formData);
+
+            request.addEventListener('load', () => { //отслеживаем загрузку
+                if (request.status === 200) {
+                    console.log(request.response);
+                    statusMessage.textContent = message.success; // после загрузки данных на сервер изменяем сообщение для пользователя
+                    form.reset(); //очистка формы после отправки данных
+                    setTimeout(() => {
+                        statusMessage.remove(); // удаляем блок с сообщением для пользователя со страницы через 2 сек
+                    }, 2000);
+                } else {
+                    statusMessage.textContent = message.failur; //если загрузка не произошла, тоже меняем сообщение для пользователя
+                }
+            });
+        });
+    }
+    //когда используем связку XMLHttpRequest и FormData то заголовки setRequestHeader задавать не нужно,он устанавливается автоматически,
+    // из-за того что мы установили заголовок, на сервере не получили данные
+
+
+
+    // для отправки данных в формате JSON код будет выглядеть след образом:
+
+    // function postData(form) {
+    //     form.addEventListener('submit', (e) => {
+    //         e.preventDefault();
+
+    //         let statusMessage = document.createElement('div');
+    //         statusMessage.classList.add('status');
+    //         statusMessage.textContent = message.loading;
+    //         form.appendChild(statusMessage);
+        
+    //         const request = new XMLHttpRequest();
+    //         request.open('POST', 'server.php');
+    //         request.setRequestHeader('Content-type', 'application/json; charset=utf-8'); //нужно устанавливать заголовки
+    //         const formData = new FormData(form);
+
+    //         //необходимо объект FormData перевести в формат JSON след образом
+    //         const object = {};
+    //         formData.forEach(function(value, key){
+    //             object[key] = value;
+    //         }); // т.о. перебором с помощью forEach получили обычный объект, а не FormData
+
+    //         const json = JSON.stringify(object); // превращаем обычный объект в JSON
+
+    //         request.send(json);
+    //         //PHP не умеет натовно работать с форматом JSON, чаще всего такие данные отправляются на сервера с использованием NodeJS, 
+    //         //но поработать с таким типом данных есть возможность см. файл server.php
+
+    //         request.addEventListener('load', () => {
+    //             if (request.status === 200) {
+    //                 console.log(request.response);
+    //                 statusMessage.textContent = message.success;
+    //                 form.reset();
+    //                 setTimeout(() => {
+    //                     statusMessage.remove();
+    //                 }, 2000);
+    //             } else {
+    //                 statusMessage.textContent = message.failure;
+    //             }
+    //         });
+    //     });
+    // }
 
 });

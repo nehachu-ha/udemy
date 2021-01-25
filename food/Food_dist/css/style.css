@@ -715,6 +715,14 @@ a {
     margin: 0 auto
 }
 
-.modal.show {
+/* .modal.show {
     display: block;
+} */
+
+.show {
+    display: block
+}
+
+.hide {
+    display: none
 }

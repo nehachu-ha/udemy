@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const modalTrigger = document.querySelectorAll('[data-modal]');
     const modal = document.querySelector('.modal');
-    const modalCloseBtn = document.querySelector('[data-close]');
+    // const modalCloseBtn = document.querySelector('[data-close]'); //удаляем, т.к. будем оспользовать делегирование событий
 
     function openModal () {
         modal.classList.add('show');
@@ -118,10 +118,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = ''; // восстанавливаем прокрутку при закрытом модальном окне, оставляем пустые кавычки, тогда браузер сам определяет что нужно сделать
     }
 
-    modalCloseBtn.addEventListener('click', closeModal); // восстанавливаем прокрутку при закрытом модальном окне, оставляем пустые кавычки, тогда браузер сам определяет что нужно сделать
+    // modalCloseBtn.addEventListener('click', closeModal); // восстанавливаем прокрутку при закрытом модальном окне, оставляем пустые кавычки, тогда браузер сам определяет что нужно сделать
+    // удаляем, т.к. будем оспользовать делегирование событий
 
-    modal.addEventListener('click', (e) => { //модальное окно закрывается при клике на подложку
-        if (e.target === modal) {
+    modal.addEventListener('click', (e) => { //модальное окно закрывается при клике на подложку 
+        if (e.target === modal || e.target.getAttribute('data-close') === '') {  //также проверяем есть ли дата -атрибут у элемента(у крестика) 
             closeModal();
         }
     });
@@ -132,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // const setTimeoutId = setInterval(openModal, 5000); // создаем таймер, чтобы модальное окно открылось самомтоятельно через какое-то время
+    const setTimeoutId = setInterval(openModal, 50000); // создаем таймер, чтобы модальное окно открылось самомтоятельно через какое-то время
 
     function showModalByScroll () {
         //pageYOffset - показывает насколько прокручерн документ по оси у; 
@@ -231,9 +232,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //создаем объект, который содержит список ответов пользователю после загрузки данных на сервер (лучше указывать позитивные и негативные сценарии)
     const message = {
-        loading: 'Загрузка.',
+        loading: 'img/spinner.svg',
         success: 'Спасибо! Скоро с вами свяжемся',
-        failur: 'Что-то пошло не так...'
+        failure: 'Что-то пошло не так...'
     };
 
     //под каждую форму нужно подвязать функцию
@@ -247,10 +248,15 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault(); // сбрасываем стандароное поведение браузера
 
             //создаем еще один блок, в котом будет выводиться сообщение для пользовател, которое будет динамически появляться на странице
-            const statusMessage = document.createElement('div');
-            statusMessage.classList.add('status');
-            statusMessage.textContent = message.loading; // при срабатывании submit сразу будет воявляться сообщение о загрузке
-            form.append(statusMessage);
+            const statusMessage = document.createElement('img');
+            statusMessage.src = message.loading; //можно использовать setAttribute() - устанавливает какой-то атрибут
+            // statusMessage.textContent = message.loading; // при срабатывании submit сразу будет воявляться сообщение о загрузке
+            statusMessage.style.cssText = ` 
+                display: block;
+                margin: 0 auto;
+            `; //устанавливаем cssстили в инлайновом формате
+            // form.append(statusMessage);
+            form.insertAdjacentElement('afterend', statusMessage); //вставляем элемент сразу после формы
 
             const request = new XMLHttpRequest();
             request.open('POST', 'server.php');
@@ -269,13 +275,11 @@ document.addEventListener('DOMContentLoaded', () => {
             request.addEventListener('load', () => { //отслеживаем загрузку
                 if (request.status === 200) {
                     console.log(request.response);
-                    statusMessage.textContent = message.success; // после загрузки данных на сервер изменяем сообщение для пользователя
+                    showThanksModal(message.success); // после загрузки данных на сервер изменяем сообщение для пользователя
                     form.reset(); //очистка формы после отправки данных
-                    setTimeout(() => {
-                        statusMessage.remove(); // удаляем блок с сообщением для пользователя со страницы через 2 сек
-                    }, 2000);
+                    statusMessage.remove(); // будет использоваться только для loading, те для спинера котрый будет показываться на странице
                 } else {
-                    statusMessage.textContent = message.failur; //если загрузка не произошла, тоже меняем сообщение для пользователя
+                    showThanksModal(message.failure); //если загрузка не произошла, тоже меняем сообщение для пользователя
                 }
             });
         });
@@ -327,5 +331,68 @@ document.addEventListener('DOMContentLoaded', () => {
     //         });
     //     });
     // }
+
+
+    //создаем красивое уведомление пользователя
+
+    // function showThanksModal(message) { //сообщение о статусе отправки пеедаем как аргумент
+    //     const previousModalDialog = document.querySelector('.modal__dialog');
+
+    //     //нужно скрыть этот элемент перед тем как показать модальное окно, НЕ УДАЛИТЬ со страницы, а СКРЫТЬ, 
+    //     //т.к. в будущем пользователь может снова открыть модальное окно и попытаться отправить форму и если полностью удалить этот блок, 
+    //     //то воспользоваться таким функционалом уже будет невозможно
+    //     previousModalDialog.classList.add('hide');
+    //     //необходимо открыть сам класс modal  и добавтить ему класс show 
+    //     openModal();
+
+    //     // сфоромировать структуру внутри modal вручную (создаем новый контент)
+    //     const thanksModal = document.createElement('div');
+    //     thanksModal.classList.add('modal___dialog');
+    //     thanksModal.innerHTML = `
+    //         <div class="modal__content">
+    //             <div class="modal__close">x</div> 
+    //             <div class="modal__title">${message}</div>
+    //         </div>
+    //     `;
+    //     // крестик который будет создаваться внутри верстки не будет реагировать на те действия, которые были повешены на него изначально, 
+    //     //т.к. если элемент создается динамически, то обработчики событий на него не повесятся, поэтому нужно использовать делегирование событий(вешаем обработчик на родителя)
+
+    //     // помещаем на страницу
+    //     document.querySelector('.modal').append(thanksModal);
+
+    //     //нужно реализовать такой функционал, чтобы все возвращалось на свои места и пользователь может снова открыть модальное окно и попытаться отправить форму
+    //     //те новый блок в модалке исчезал, а старый появлялся
+    //     setTimeout(() => {
+    //         thanksModal.remove();
+    //         previousModalDialog.classList.add('show');
+    //         previousModalDialog.classList.remove('hide');
+    //         closeModal();
+    //     }, 5000);
+    // } // почему-то не правильно срабатывает функция
+
+
+    function showThanksModal(message) {
+        const prevModalDialog = document.querySelector('.modal__dialog');
+
+        prevModalDialog.classList.add('hide');
+        openModal();
+
+        const thanksModal = document.createElement('div');
+        thanksModal.classList.add('modal__dialog');
+        thanksModal.innerHTML = `
+            <div class="modal__content">
+                <div class="modal__close" data-close>×</div>
+                <div class="modal__title">${message}</div>
+            </div>
+        `;
+        document.querySelector('.modal').append(thanksModal);
+        setTimeout(() => {
+            thanksModal.remove();
+            prevModalDialog.classList.add('show');
+            prevModalDialog.classList.remove('hide');
+            closeModal();
+        }, 4000);
+    }
+
 
 });

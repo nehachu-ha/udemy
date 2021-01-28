@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 seconds = timer.querySelector('#seconds');
             const timeInterval = setInterval(updateClock, 1000); // запускаем функцию каждую секунду
 
-            updateClock(); //запускаем функцию прямо здесь, чтобы избежать мигания таймера при загрузке страницы, т.к. сначала загружаются данные из верстки, 
+            updateClock(); //запускаем функцию прямо здесь, чтобы избежать мигания таймера при загрузке страницы, т.к. сначала загружаются данные из верстки,
                            //а таймер запускает функцию только через секунду
 
             function updateClock() { //создаем функцию, которая будет обновлять таймер каждую секунду
@@ -121,8 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // modalCloseBtn.addEventListener('click', closeModal); // восстанавливаем прокрутку при закрытом модальном окне, оставляем пустые кавычки, тогда браузер сам определяет что нужно сделать
     // удаляем, т.к. будем оспользовать делегирование событий
 
-    modal.addEventListener('click', (e) => { //модальное окно закрывается при клике на подложку 
-        if (e.target === modal || e.target.getAttribute('data-close') === '') {  //также проверяем есть ли дата -атрибут у элемента(у крестика) 
+    modal.addEventListener('click', (e) => { //модальное окно закрывается при клике на подложку
+        if (e.target === modal || e.target.getAttribute('data-close') === '') {  //также проверяем есть ли дата -атрибут у элемента(у крестика)
             closeModal();
         }
     });
@@ -136,9 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const setTimeoutId = setInterval(openModal, 50000); // создаем таймер, чтобы модальное окно открылось самомтоятельно через какое-то время
 
     function showModalByScroll () {
-        //pageYOffset - показывает насколько прокручерн документ по оси у; 
+        //pageYOffset - показывает насколько прокручерн документ по оси у;
         //clientHeight - показывает сколько пикселей сечас видно пользователю;
-        //scrollHeight -  полный сайт 
+        //scrollHeight -  полный сайт
         if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) { // то узнаем прокручена ли страница до конца;
             openModal();
             window.removeEventListener('scroll', showModalByScroll); // удаляем обработчик события после того как один раз уже открылось модальное окно, чтобы не открывалось повторно
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('scroll', showModalByScroll);// вешаем обработчик события на скролл
-       
+
 //используем классы для карточек
 
     class MenuCard {
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.parent = document.querySelector(parentSelector); //ищем элемент после которого помещать в разметку element;
             this.transfer = 27;
             this.changeToUAH();
-        } 
+        }
 
         changeToUAH() {    // конвертация курсов валют
             this.price = this.price * this.transfer;
@@ -172,10 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.element = 'menu__item'; //назначаем дефолтный класс
                 element.classList.add(this.element);
             } else {
-                this.classes.forEach(className => element.classList.add(className)); //перебираем массив, внутри forEach с помощью стрелочной функции говорим, что 
+                this.classes.forEach(className => element.classList.add(className)); //перебираем массив, внутри forEach с помощью стрелочной функции говорим, что
                 //в качестве аргумента она принимает имя класса и добавляет element указанный класс
             }
-          
+
             element.innerHTML = `
             <img src=${this.src} alt=${this.alt}>
             <h3 class="menu__item-subtitle">${this.title}</h3>
@@ -191,8 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // const div = new MenuCard();
     // div.render();
-    
-    //объект может существовать и без переменной, делается это тогда, когда этот объект используется только на месте. если его не положить в переменную, 
+
+    //объект может существовать и без переменной, делается это тогда, когда этот объект используется только на месте. если его не положить в переменную,
     //то в будущем он потеряется, он создастся и удалится , т.к. на него не будет потом никаких ссылок, тогда запись будет следующего вида
 
     new MenuCard( // аргументы копируем из HTML
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
         9,
         '.menu .container',
-        
+
     ).render();
 
     new MenuCard( // аргументы копируем из HTML
@@ -227,9 +227,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 //Forms
-    
+
     const forms = document.querySelectorAll('form');
-    
+
     //создаем объект, который содержит список ответов пользователю после загрузки данных на сервер (лучше указывать позитивные и негативные сценарии)
     const message = {
         loading: 'img/spinner.svg',
@@ -260,8 +260,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const request = new XMLHttpRequest();
             request.open('POST', 'server.php');
-            
-            //нужно сделать так, чтобы все данные, которые пользователь заполнил в форме , мы получили в JS и уже могли отправить на сервер 
+
+            //нужно сделать так, чтобы все данные, которые пользователь заполнил в форме , мы получили в JS и уже могли отправить на сервер
             //и самый простой способ  - это использовать объект formData. Нам не всегда нужно передавать в формате JSON, ориентируясь на то как работаем с бэкэндом
             //formData - это специальный объект, который позволяет с определнной формы быстро сформировать данные которые заполнил пользователь, в формате ключ-значение
 
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //         statusMessage.classList.add('status');
     //         statusMessage.textContent = message.loading;
     //         form.appendChild(statusMessage);
-        
+
     //         const request = new XMLHttpRequest();
     //         request.open('POST', 'server.php');
     //         request.setRequestHeader('Content-type', 'application/json; charset=utf-8'); //нужно устанавливать заголовки
@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //         const json = JSON.stringify(object); // превращаем обычный объект в JSON
 
     //         request.send(json);
-    //         //PHP не умеет натовно работать с форматом JSON, чаще всего такие данные отправляются на сервера с использованием NodeJS, 
+    //         //PHP не умеет натовно работать с форматом JSON, чаще всего такие данные отправляются на сервера с использованием NodeJS,
     //         //но поработать с таким типом данных есть возможность см. файл server.php
 
     //         request.addEventListener('load', () => {
@@ -338,11 +338,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // function showThanksModal(message) { //сообщение о статусе отправки пеедаем как аргумент
     //     const previousModalDialog = document.querySelector('.modal__dialog');
 
-    //     //нужно скрыть этот элемент перед тем как показать модальное окно, НЕ УДАЛИТЬ со страницы, а СКРЫТЬ, 
-    //     //т.к. в будущем пользователь может снова открыть модальное окно и попытаться отправить форму и если полностью удалить этот блок, 
+    //     //нужно скрыть этот элемент перед тем как показать модальное окно, НЕ УДАЛИТЬ со страницы, а СКРЫТЬ,
+    //     //т.к. в будущем пользователь может снова открыть модальное окно и попытаться отправить форму и если полностью удалить этот блок,
     //     //то воспользоваться таким функционалом уже будет невозможно
     //     previousModalDialog.classList.add('hide');
-    //     //необходимо открыть сам класс modal  и добавтить ему класс show 
+    //     //необходимо открыть сам класс modal  и добавтить ему класс show
     //     openModal();
 
     //     // сфоромировать структуру внутри modal вручную (создаем новый контент)
@@ -350,11 +350,11 @@ document.addEventListener('DOMContentLoaded', () => {
     //     thanksModal.classList.add('modal___dialog');
     //     thanksModal.innerHTML = `
     //         <div class="modal__content">
-    //             <div class="modal__close">x</div> 
+    //             <div class="modal__close">x</div>
     //             <div class="modal__title">${message}</div>
     //         </div>
     //     `;
-    //     // крестик который будет создаваться внутри верстки не будет реагировать на те действия, которые были повешены на него изначально, 
+    //     // крестик который будет создаваться внутри верстки не будет реагировать на те действия, которые были повешены на него изначально,
     //     //т.к. если элемент создается динамически, то обработчики событий на него не повесятся, поэтому нужно использовать делегирование событий(вешаем обработчик на родителя)
 
     //     // помещаем на страницу
@@ -393,6 +393,33 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }, 4000);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 });

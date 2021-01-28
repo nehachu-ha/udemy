@@ -20,11 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8745993-aad9-41fd-b82b-7b9b8494e9f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/food/Food_dist/js/script2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/script8.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/food/Food_dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/food/Food_dist/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/script7.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script7.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,12 +56,16 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Node.js.script8.js">
     <configuration name="script7.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/js/script7.js" working-dir="$PROJECT_DIR$/js">
+      <method v="2" />
+    </configuration>
+    <configuration name="script8.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/js/script8.js" working-dir="$PROJECT_DIR$/js">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.script8.js" />
         <item itemvalue="Node.js.script7.js" />
       </list>
     </recent_temporary>
@@ -76,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611823948565</updated>
-      <workItem from="1611823950323" duration="6347000" />
+      <workItem from="1611823950323" duration="11990000" />
     </task>
     <servers />
   </component>
@@ -103,22 +105,22 @@
       <screen x="0" y="23" width="1792" height="1022" />
     </state>
     <state x="473" y="23" key="CommitChangelistDialog2/0.23.1792.1022@0.23.1792.1022" timestamp="1611829161639" />
-    <state width="1771" height="273" key="GridCell.Tab.0.bottom" timestamp="1611826684877">
+    <state width="1771" height="273" key="GridCell.Tab.0.bottom" timestamp="1611843832146">
       <screen x="0" y="23" width="1792" height="1022" />
     </state>
-    <state width="1771" height="273" key="GridCell.Tab.0.bottom/0.23.1792.1022@0.23.1792.1022" timestamp="1611826684877" />
-    <state width="1771" height="273" key="GridCell.Tab.0.center" timestamp="1611826684877">
+    <state width="1771" height="273" key="GridCell.Tab.0.bottom/0.23.1792.1022@0.23.1792.1022" timestamp="1611843832146" />
+    <state width="1771" height="273" key="GridCell.Tab.0.center" timestamp="1611843832145">
       <screen x="0" y="23" width="1792" height="1022" />
     </state>
-    <state width="1771" height="273" key="GridCell.Tab.0.center/0.23.1792.1022@0.23.1792.1022" timestamp="1611826684877" />
-    <state width="1771" height="273" key="GridCell.Tab.0.left" timestamp="1611826684877">
+    <state width="1771" height="273" key="GridCell.Tab.0.center/0.23.1792.1022@0.23.1792.1022" timestamp="1611843832145" />
+    <state width="1771" height="273" key="GridCell.Tab.0.left" timestamp="1611843832145">
       <screen x="0" y="23" width="1792" height="1022" />
     </state>
-    <state width="1771" height="273" key="GridCell.Tab.0.left/0.23.1792.1022@0.23.1792.1022" timestamp="1611826684877" />
-    <state width="1771" height="273" key="GridCell.Tab.0.right" timestamp="1611826684877">
+    <state width="1771" height="273" key="GridCell.Tab.0.left/0.23.1792.1022@0.23.1792.1022" timestamp="1611843832145" />
+    <state width="1771" height="273" key="GridCell.Tab.0.right" timestamp="1611843832145">
       <screen x="0" y="23" width="1792" height="1022" />
     </state>
-    <state width="1771" height="273" key="GridCell.Tab.0.right/0.23.1792.1022@0.23.1792.1022" timestamp="1611826684877" />
+    <state width="1771" height="273" key="GridCell.Tab.0.right/0.23.1792.1022@0.23.1792.1022" timestamp="1611843832145" />
     <state x="397" y="173" key="SettingsEditor" timestamp="1611826079712">
       <screen x="0" y="23" width="1792" height="1022" />
     </state>

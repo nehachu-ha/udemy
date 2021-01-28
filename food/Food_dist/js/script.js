@@ -368,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //         previousModalDialog.classList.remove('hide');
     //         closeModal();
     //     }, 5000);
-    // } // почему-то не правильно срабатывает функция
+    // } // почему-то не правильно срабатывает функция, ниже код препода
 
 
     function showThanksModal(message) {

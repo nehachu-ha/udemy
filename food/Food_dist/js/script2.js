@@ -284,4 +284,21 @@ window.addEventListener('DOMContentLoaded', function() {
       closeModal();
     }, 4000);
   }
+
+  //команды для npm и запуска json-server
+  //cd folder_name
+  //npm init / npm i
+  //npm i json-server        - local
+  //npm i json-server -g     - global
+  //sudo npm i json-server   - local for macOS
+  //npm i json-server --save-dev   - для разработки
+  //npm i json-server --save       - для работы
+  //json-server url
+  //npx json-server url
+
+  //получаем доступ к базе данных db.json
+  fetch('http://localhost:3000/menu')
+    .then(data => data.json()) //возьмем ответ от сервера data и превратим его в обычный JS объект
+    .then(res => console.log(res));
+
 });

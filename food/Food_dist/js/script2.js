@@ -195,16 +195,25 @@ window.addEventListener('DOMContentLoaded', function() {
   //.ok - это свойство говорит о том что мы что-то получили и все ок или не ок
   //status - здесь мы попадаем на тот статус который вернул нам сервер(200 - ok, 404 - not found, 500)
 
-  getResource(' http://localhost:3000/menu')
+  // getResource(' http://localhost:3000/menu')
+  //   .then(data => {
+  //     // data.forEach(obj => {
+  //     //   new MenuCard(obj.img, obj.altimg, obj.title, obj.descr, obj.price).render(); //этот конструктор будет создаваться столько раз, сколько объектов будет внутри массива, который придет с сервера
+  //     // });
+  //     // здесь должны использовать синтаксис деструктуризации объекта - те когда из объекта вытаскиваем отдельные свойствва в качестве отдельной переменной
+  //     data.forEach(({img, altimg, title, descr, price}) => {
+  //       new MenuCard(img, altimg, title, descr, price, '.menu .container').render(); //этот конструктор будет создаваться столько раз, сколько объектов будет внутри массива, который придет с сервера
+  //     });
+  //   });
+
+  //делаем запрос при помощи библиотеки axios
+  axios.get('http://localhost:3000/menu')
     .then(data => {
-      // data.forEach(obj => {
-      //   new MenuCard(obj.img, obj.altimg, obj.title, obj.descr, obj.price).render(); //этот конструктор будет создаваться столько раз, сколько объектов будет внутри массива, который придет с сервера
-      // });
-      // здесь должны использовать синтаксис деструктуризации объекта - те когда из объекта вытаскиваем отдельные свойствва в качестве отдельной переменной
-      data.forEach(({img, altimg, title, descr, price}) => {
-        new MenuCard(img, altimg, title, descr, price, '.menu .container').render(); //этот конструктор будет создаваться столько раз, сколько объектов будет внутри массива, который придет с сервера
+      data.data.forEach(({img, altimg, title, descr, price}) => { // данным полученных у данных
+        new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
       });
     });
+
   // теперь код ниже абсолютно не нужен
   // new MenuCard(
   //   "img/tabs/vegy.jpg",

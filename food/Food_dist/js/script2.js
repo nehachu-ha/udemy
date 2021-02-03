@@ -380,8 +380,58 @@ window.addEventListener('DOMContentLoaded', function() {
   //npx json-server url
 
   //получаем доступ к базе данных db.json
-  fetch('http://localhost:3000/menu')
-    .then(data => data.json()) //возьмем ответ от сервера data и превратим его в обычный JS объект
-    .then(res => console.log(res));
+  // fetch('http://localhost:3000/menu')
+  //   .then(data => data.json()) //возьмем ответ от сервера data и превратим его в обычный JS объект
+  //   .then(res => console.log(res));
+
+
+  //Slider
+
+  const slides = document.querySelectorAll('.offer__slide');
+  const prev = document.querySelector('.offer__slider-prev');
+  const next = document.querySelector('.offer__slider-next');
+  const total = document.querySelector('#total');
+  const current = document.querySelector('#current');
+  let slideIndex = 1;
+
+  showSlides(slideIndex); // нужно проинициализировать слайдер, чтобы он превратился в ту структуру которую мы должны увидеть
+
+  if (slides.length < 10) {  // добавляем 0 в счетчике слайдов, если поместить этот функционал в функцию showSlides, то будет мигать переключение, тк каждый раз функция будет вызываться
+    total.textContent = `0${slides.length}`;
+  } else {
+    total.textContent = slides.length;
+  }
+
+  function showSlides (n) {
+    if (n > slides.length) {
+      slideIndex = 1;
+    }
+    if (n < 1) {
+      slideIndex = slides.length
+    }
+
+    slides.forEach(item => item.style.display = 'none') //скрываем все слайды
+
+    slides[slideIndex - 1].style.display = 'block';  //-1 это значит 0левой слайд по индексации браузера //показываем нужный нам слайд
+
+    if (slides.length < 10) {  // изменяем текущий индекс при каждом клике на стрелочки
+      current.textContent = `0${slideIndex}`;
+    } else {
+      current.textContent = slideIndex;
+    }
+  }
+
+  function plusSlides (n) { //делаем функцию которая будет изменять слайд индекс
+    showSlides(slideIndex += n); //  вызыввем функцию  showSlides внутри которой увеличиваем slideIndex на значение n. В этом случае мы сразу вызываем функции с необходимым числом
+  }
+
+  prev.addEventListener('click',() => {
+    plusSlides(-1);
+  });
+
+  next.addEventListener('click',() => {
+    plusSlides(1);
+  });
+
 
 });

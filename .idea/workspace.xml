@@ -21,7 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b8745993-aad9-41fd-b82b-7b9b8494e9f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/js/script2.js" beforeDir="false" afterPath="$PROJECT_DIR$/food/Food_dist/js/script2.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +54,7 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Node.js.script2.js">
+  <component name="RunManager" selected="Node.js.script.js">
     <configuration name="script2.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/food/Food_dist/js/script2.js" working-dir="$PROJECT_DIR$/food/Food_dist/js">
       <method v="2" />
     </configuration>
@@ -65,8 +64,12 @@
     <configuration name="script8.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/js/script8.js" working-dir="$PROJECT_DIR$/js">
       <method v="2" />
     </configuration>
+    <configuration name="script.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/preview 2/script.js" working-dir="$PROJECT_DIR$/preview 2">
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.script.js" />
         <item itemvalue="Node.js.script2.js" />
         <item itemvalue="Node.js.script8.js" />
         <item itemvalue="Node.js.script7.js" />
@@ -86,7 +89,7 @@
       <workItem from="1612340675585" duration="3931000" />
       <workItem from="1613396166099" duration="418000" />
       <workItem from="1613467765255" duration="546000" />
-      <workItem from="1614596473288" duration="8246000" />
+      <workItem from="1614596473288" duration="11654000" />
     </task>
     <servers />
   </component>
@@ -104,35 +107,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="360" y="196" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611826308583">
-      <screen x="0" y="23" width="1792" height="1022" />
-    </state>
-    <state x="360" y="196" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1792.1022@0.23.1792.1022" timestamp="1611826308583" />
-    <state x="473" y="23" key="CommitChangelistDialog2" timestamp="1612256859842">
-      <screen x="0" y="23" width="1792" height="1022" />
-    </state>
-    <state x="473" y="23" key="CommitChangelistDialog2/0.23.1792.1022@0.23.1792.1022" timestamp="1612256859842" />
-    <state width="1771" height="273" key="GridCell.Tab.0.bottom" timestamp="1612263875304">
-      <screen x="0" y="23" width="1792" height="1022" />
-    </state>
-    <state width="1771" height="273" key="GridCell.Tab.0.bottom/0.23.1792.1022@0.23.1792.1022" timestamp="1612263875304" />
-    <state width="1771" height="273" key="GridCell.Tab.0.center" timestamp="1612263875303">
-      <screen x="0" y="23" width="1792" height="1022" />
-    </state>
-    <state width="1771" height="273" key="GridCell.Tab.0.center/0.23.1792.1022@0.23.1792.1022" timestamp="1612263875303" />
-    <state width="1771" height="273" key="GridCell.Tab.0.left" timestamp="1612263875295">
-      <screen x="0" y="23" width="1792" height="1022" />
-    </state>
-    <state width="1771" height="273" key="GridCell.Tab.0.left/0.23.1792.1022@0.23.1792.1022" timestamp="1612263875295" />
-    <state width="1771" height="273" key="GridCell.Tab.0.right" timestamp="1612263875303">
-      <screen x="0" y="23" width="1792" height="1022" />
-    </state>
-    <state width="1771" height="273" key="GridCell.Tab.0.right/0.23.1792.1022@0.23.1792.1022" timestamp="1612263875303" />
-    <state x="397" y="173" key="SettingsEditor" timestamp="1611826079712">
-      <screen x="0" y="23" width="1792" height="1022" />
-    </state>
-    <state x="397" y="173" key="SettingsEditor/0.23.1792.1022@0.23.1792.1022" timestamp="1611826079712" />
   </component>
 </project>

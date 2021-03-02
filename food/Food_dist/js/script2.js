@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Timer
 
-  const deadline = '2020-05-11';
+  const deadline = '2021-05-20';
 
   function getTimeRemaining(endtime) {
     const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -392,46 +392,109 @@ window.addEventListener('DOMContentLoaded', function() {
   const next = document.querySelector('.offer__slider-next');
   const total = document.querySelector('#total');
   const current = document.querySelector('#current');
+  const slidesWrapper = document.querySelector('.offer__slider-wrapper');
+  const slidesField = document.querySelector('.offer__slider-inner');
+  const width = window.getComputedStyle(slidesWrapper).width;
   let slideIndex = 1;
+  let offset = 0; // отступ, который сделали при помощи transition
 
-  showSlides(slideIndex); // нужно проинициализировать слайдер, чтобы он превратился в ту структуру которую мы должны увидеть
-
-  if (slides.length < 10) {  // добавляем 0 в счетчике слайдов, если поместить этот функционал в функцию showSlides, то будет мигать переключение, тк каждый раз функция будет вызываться
-    total.textContent = `0${slides.length}`;
-  } else {
-    total.textContent = slides.length;
+  if (slides.length < 10) {
+      total.textContent = `0${slides.length}`;
+      current.textContent = `0${slideIndex}`;
+    } else {
+      total.textContent = slides.length;
+      current.textContent = slideIndex;
   }
 
-  function showSlides (n) {
-    if (n > slides.length) {
+  slidesField.style.width = 100 * slides.length + '%'; // устанавливаем ширину иннера, чтобы поместить все слайды внутрь его
+  slidesField.style.display = 'flex';
+  slidesField.style.transition = 'all 0.5s';
+
+  slidesWrapper.style.overflow = 'hidden';
+
+  slides.forEach(slide => { // делаем слайды одинаковой ширины
+    slide.style.width = width;
+  })
+
+  next.addEventListener('click', () => {
+    if (offset === +width.slice(0, width.length - 2) * (slides.length - 1)) { //смещаем слайдер на начало
+      offset = 0;
+    } else {
+      offset += +width.slice(0, width.length - 2)  // мсещаем слайдер на ширину еще одного слайда
+    }
+    slidesField.style.transform =`translateX(-${offset}px)`; //сдвигаем слайд влево
+
+    if (slideIndex === slides.length) {
       slideIndex = 1;
+    } else {
+      slideIndex++;
     }
-    if (n < 1) {
-      slideIndex = slides.length
-    }
 
-    slides.forEach(item => item.style.display = 'none') //скрываем все слайды
-
-    slides[slideIndex - 1].style.display = 'block';  //-1 это значит 0левой слайд по индексации браузера //показываем нужный нам слайд
-
-    if (slides.length < 10) {  // изменяем текущий индекс при каждом клике на стрелочки
+    if (slides.length < 10) {
       current.textContent = `0${slideIndex}`;
     } else {
       current.textContent = slideIndex;
     }
-  }
+  })
 
-  function plusSlides (n) { //делаем функцию которая будет изменять слайд индекс
-    showSlides(slideIndex += n); //  вызыввем функцию  showSlides внутри которой увеличиваем slideIndex на значение n. В этом случае мы сразу вызываем функции с необходимым числом
-  }
+  prev.addEventListener('click', () => {
+    if (offset === 0) { //смещаем слайдер на конец
+      offset = +width.slice(0, width.length - 2) * (slides.length - 1);
+    } else {
+      offset -= +width.slice(0, width.length - 2)  // мсещаем слайдер на ширину еще одного слайда
+    }
+    slidesField.style.transform =`translateX(-${offset}px)`; //сдвигаем слайд влево
 
-  prev.addEventListener('click',() => {
-    plusSlides(-1);
-  });
+    if (slideIndex === 1) {
+      slideIndex = slides.length;
+    } else {
+      slideIndex--;
+    }
 
-  next.addEventListener('click',() => {
-    plusSlides(1);
-  });
+    if (slides.length < 10) {
+      current.textContent = `0${slideIndex}`;
+    } else {
+      current.textContent = slideIndex;
+    }
+  })
+  // showSlides(slideIndex); // нужно проинициализировать слайдер, чтобы он превратился в ту структуру которую мы должны увидеть
+  //
+  // if (slides.length < 10) {  // добавляем 0 в счетчике слайдов, если поместить этот функционал в функцию showSlides, то будет мигать переключение, тк каждый раз функция будет вызываться
+  //   total.textContent = `0${slides.length}`;
+  // } else {
+  //   total.textContent = slides.length;
+  // }
+  //
+  // function showSlides (n) {
+  //   if (n > slides.length) {
+  //     slideIndex = 1;
+  //   }
+  //   if (n < 1) {
+  //     slideIndex = slides.length
+  //   }
+  //
+  //   slides.forEach(item => item.style.display = 'none') //скрываем все слайды
+  //
+  //   slides[slideIndex - 1].style.display = 'block';  //-1 это значит 0левой слайд по индексации браузера //показываем нужный нам слайд
+  //
+  //   if (slides.length < 10) {  // изменяем текущий индекс при каждом клике на стрелочки
+  //     current.textContent = `0${slideIndex}`;
+  //   } else {
+  //     current.textContent = slideIndex;
+  //   }
+  // }
+  //
+  // function plusSlides (n) { //делаем функцию которая будет изменять слайд индекс
+  //   showSlides(slideIndex += n); //  вызыввем функцию  showSlides внутри которой увеличиваем slideIndex на значение n. В этом случае мы сразу вызываем функции с необходимым числом
+  // }
+  //
+  // prev.addEventListener('click',() => {
+  //   plusSlides(-1);
+  // });
+  //
+  // next.addEventListener('click',() => {
+  //   plusSlides(1);
+  // });
 
 
 });

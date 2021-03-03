@@ -462,17 +462,22 @@ window.addEventListener('DOMContentLoaded', function() {
     dots.push(dot);
   }
 
+  function deleteNotDigits (str) {
+    return +str.replace(/\D/g, '');
+  }
+
 
   next.addEventListener('click', () => {
-    if (offset === +width.slice(0, width.length - 2) * (slides.length - 1)) { //смещаем слайдер на начало
+    if (offset === deleteNotDigits(width) * (slides.length - 1)) { //смещаем слайдер на начало
       offset = 0;
     } else {
-      offset += +width.slice(0, width.length - 2)  // мсещаем слайдер на ширину еще одного слайда
+      offset += deleteNotDigits(width);  // мсещаем слайдер на ширину еще одного слайда
     }
     slidesField.style.transform =`translateX(-${offset}px)`; //сдвигаем слайд влево
 
     if (slideIndex === slides.length) {
       slideIndex = 1;
+
     } else {
       slideIndex++;
     }
@@ -481,7 +486,7 @@ window.addEventListener('DOMContentLoaded', function() {
       current.textContent = `0${slideIndex}`;
     } else {
       current.textContent = slideIndex;
-    };
+    }
 
     dots.forEach(dot => dot.style.opacity = '0.5');
     dots[slideIndex - 1].style.opacity = '1';
@@ -489,9 +494,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
   prev.addEventListener('click', () => {
     if (offset === 0) { //смещаем слайдер на конец
-      offset = +width.slice(0, width.length - 2) * (slides.length - 1);
+      offset = deleteNotDigits(width) * (slides.length - 1);
     } else {
-      offset -= +width.slice(0, width.length - 2)  // мсещаем слайдер на ширину еще одного слайда
+      offset -= deleteNotDigits(width); // мсещаем слайдер на ширину еще одного слайда
     }
     slidesField.style.transform =`translateX(-${offset}px)`; //сдвигаем слайд влево
 
@@ -516,7 +521,7 @@ window.addEventListener('DOMContentLoaded', function() {
       const slideTo = e.target.getAttribute('data-slide-to');
 
       slideIndex = slideTo;
-      offset = +width.slice(0, width.length - 2) * (slideTo- 1);
+      offset = deleteNotDigits(width) * (slideTo- 1);
 
       slidesField.style.transform =`translateX(-${offset}px)`;
 

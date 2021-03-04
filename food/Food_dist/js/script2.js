@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
 
   // Tabs
 
@@ -27,9 +27,9 @@ window.addEventListener('DOMContentLoaded', function() {
   hideTabContent();
   showTabContent();
 
-  tabsParent.addEventListener('click', function(event) {
+  tabsParent.addEventListener('click', function (event) {
     const target = event.target;
-    if(target && target.classList.contains('tabheader__item')) {
+    if (target && target.classList.contains('tabheader__item')) {
       tabs.forEach((item, i) => {
         if (target === item) {
           hideTabContent();
@@ -45,10 +45,10 @@ window.addEventListener('DOMContentLoaded', function() {
 
   function getTimeRemaining(endtime) {
     const t = Date.parse(endtime) - Date.parse(new Date()),
-      days = Math.floor( (t/(1000*60*60*24)) ),
-      seconds = Math.floor( (t/1000) % 60 ),
-      minutes = Math.floor( (t/1000/60) % 60 ),
-      hours = Math.floor( (t/(1000*60*60) % 24) );
+      days = Math.floor((t / (1000 * 60 * 60 * 24))),
+      seconds = Math.floor((t / 1000) % 60),
+      minutes = Math.floor((t / 1000 / 60) % 60),
+      hours = Math.floor((t / (1000 * 60 * 60) % 24));
 
     return {
       'total': t,
@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', function() {
     };
   }
 
-  function getZero(num){
+  function getZero(num) {
     if (num >= 0 && num < 10) {
       return '0' + num;
     } else {
@@ -129,6 +129,7 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   const modalTimerId = setTimeout(openModal, 300000);
+
   // Изменил значение, чтобы не отвлекало
 
   function showModalByScroll() {
@@ -137,6 +138,7 @@ window.addEventListener('DOMContentLoaded', function() {
       window.removeEventListener('scroll', showModalByScroll);
     }
   }
+
   window.addEventListener('scroll', showModalByScroll);
 
   // Используем классы для создание карточек меню
@@ -186,7 +188,7 @@ window.addEventListener('DOMContentLoaded', function() {
     const res = await fetch(url);
     if (!res.ok) {  // если выкидывать ошибку в ручном режиме, то сработает блок кода catch
       //объект ошибки, внутрь помещается текст ошибки, чтобы выкинуть объект ошибки оспользуется оператор throw
-      throw new  Error(`Could not fetch ${url}, status: ${res.status}`); //выведется в консоль
+      throw new Error(`Could not fetch ${url}, status: ${res.status}`); //выведется в консоль
     }
     return await res.json();
   };
@@ -334,10 +336,10 @@ window.addEventListener('DOMContentLoaded', function() {
       postData(' http://localhost:3000/requests', json)
         // .then(data => data.text()) //превращаем ответ в обычный текст
         .then(data => {
-        console.log(data);
-        showThanksModal(message.success);
-        statusMessage.remove();
-      }).catch(() => {
+          console.log(data);
+          showThanksModal(message.success);
+          statusMessage.remove();
+        }).catch(() => {
         showThanksModal(message.failure);
       }).finally(() => {
         form.reset();
@@ -400,11 +402,11 @@ window.addEventListener('DOMContentLoaded', function() {
   let offset = 0; // отступ, который сделали при помощи transition
 
   if (slides.length < 10) {
-      total.textContent = `0${slides.length}`;
-      current.textContent = `0${slideIndex}`;
-    } else {
-      total.textContent = slides.length;
-      current.textContent = slideIndex;
+    total.textContent = `0${slides.length}`;
+    current.textContent = `0${slideIndex}`;
+  } else {
+    total.textContent = slides.length;
+    current.textContent = slideIndex;
   }
 
   slidesField.style.width = 100 * slides.length + '%'; // устанавливаем ширину иннера, чтобы поместить все слайды внутрь его
@@ -421,7 +423,8 @@ window.addEventListener('DOMContentLoaded', function() {
   slider.style.position = 'relative';
 
   const indicators = document.createElement('ol'),
-        dots = [];
+    dots = [];
+
   indicators.classList.add('carousel-indicators');
   indicators.style.cssText = `
     position: absolute;
@@ -462,10 +465,22 @@ window.addEventListener('DOMContentLoaded', function() {
     dots.push(dot);
   }
 
-  function deleteNotDigits (str) {
+  function deleteNotDigits(str) {
     return +str.replace(/\D/g, '');
   }
 
+  function addZero() {
+    if (slides.length < 10) {
+      current.textContent = `0${slideIndex}`;
+    } else {
+      current.textContent = slideIndex;
+    }
+  }
+
+  function addOpacity() {
+    dots.forEach(dot => dot.style.opacity = '0.5');
+    dots[slideIndex - 1].style.opacity = '1';
+  }
 
   next.addEventListener('click', () => {
     if (offset === deleteNotDigits(width) * (slides.length - 1)) { //смещаем слайдер на начало
@@ -473,7 +488,7 @@ window.addEventListener('DOMContentLoaded', function() {
     } else {
       offset += deleteNotDigits(width);  // мсещаем слайдер на ширину еще одного слайда
     }
-    slidesField.style.transform =`translateX(-${offset}px)`; //сдвигаем слайд влево
+    slidesField.style.transform = `translateX(-${offset}px)`; //сдвигаем слайд влево
 
     if (slideIndex === slides.length) {
       slideIndex = 1;
@@ -482,14 +497,9 @@ window.addEventListener('DOMContentLoaded', function() {
       slideIndex++;
     }
 
-    if (slides.length < 10) {
-      current.textContent = `0${slideIndex}`;
-    } else {
-      current.textContent = slideIndex;
-    }
+    addZero();
 
-    dots.forEach(dot => dot.style.opacity = '0.5');
-    dots[slideIndex - 1].style.opacity = '1';
+    addOpacity();
   });
 
   prev.addEventListener('click', () => {
@@ -498,7 +508,7 @@ window.addEventListener('DOMContentLoaded', function() {
     } else {
       offset -= deleteNotDigits(width); // мсещаем слайдер на ширину еще одного слайда
     }
-    slidesField.style.transform =`translateX(-${offset}px)`; //сдвигаем слайд влево
+    slidesField.style.transform = `translateX(-${offset}px)`; //сдвигаем слайд влево
 
     if (slideIndex === 1) {
       slideIndex = slides.length;
@@ -506,14 +516,9 @@ window.addEventListener('DOMContentLoaded', function() {
       slideIndex--;
     }
 
-    if (slides.length < 10) {
-      current.textContent = `0${slideIndex}`;
-    } else {
-      current.textContent = slideIndex;
-    }
+    addZero();
 
-    dots.forEach(dot => dot.style.opacity = '0.5');
-    dots[slideIndex - 1].style.opacity = '1';
+    addOpacity();
   });
 
   dots.forEach(dot => {   //делаем так чтобы при нажатии на точку листался слайдер
@@ -521,18 +526,13 @@ window.addEventListener('DOMContentLoaded', function() {
       const slideTo = e.target.getAttribute('data-slide-to');
 
       slideIndex = slideTo;
-      offset = deleteNotDigits(width) * (slideTo- 1);
+      offset = deleteNotDigits(width) * (slideTo - 1);
 
-      slidesField.style.transform =`translateX(-${offset}px)`;
+      slidesField.style.transform = `translateX(-${offset}px)`;
 
-      if (slides.length < 10) {
-        current.textContent = `0${slideIndex}`;
-      } else {
-        current.textContent = slideIndex;
-      }
+      addZero();
 
-      dots.forEach(dot => dot.style.opacity = '0.5');
-      dots[slideIndex - 1].style.opacity = '1';
+      addOpacity();
     })
   });
   // showSlides(slideIndex); // нужно проинициализировать слайдер, чтобы он превратился в ту структуру которую мы должны увидеть
@@ -574,5 +574,114 @@ window.addEventListener('DOMContentLoaded', function() {
   //   plusSlides(1);
   // });
 
+  //calculator
+
+  const result = document.querySelector('.calculating__result span');
+  let sex, height, weight, age, ratio;
+
+  if (localStorage.getItem('sex')) {
+    sex = localStorage.getItem('sex');
+  } else {
+    sex = 'female';
+    localStorage.setItem('sex', 'female')
+  }
+
+  if (localStorage.getItem('ratio')) {
+    ratio = localStorage.getItem('ratio');
+  } else {
+    ratio = 1.375;
+    localStorage.setItem('ratio', '1.375');
+  }
+
+  function initLocalSettings (selector, activeClass) {
+    const elements = document.querySelectorAll(selector);
+
+    elements.forEach(elem => {
+      elem.classList.remove(activeClass);
+      if (elem.getAttribute('id') === localStorage.getItem('sex')) {
+        elem.classList.add(activeClass);
+      }
+      if (elem.getAttribute('data-ratio') === localStorage.getItem('ratio')) {
+        elem.classList.add(activeClass);
+      }
+    });
+  }
+
+  initLocalSettings('#gender div', 'calculating__choose-item_active');
+  initLocalSettings('.calculating__choose_big div', 'calculating__choose-item_active')
+
+  function calcTotal() {
+    if (!sex || !height || !weight || !age || !ratio) {
+      result.textContent = '____'; // Можете придумать что угодно
+      return;
+    }
+
+    if (sex === 'female') {
+      result.textContent = Math.round((447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age)) * ratio);
+    } else {
+      result.textContent = Math.round((88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)) * ratio);
+    }
+  }
+
+  calcTotal();
+
+  function getStaticInformation(selector, activeClass) {
+    const elements = document.querySelectorAll(selector);
+
+    elements.forEach(elem => {
+      elem.addEventListener('click', (e) => {
+
+        if (e.target.getAttribute('data-ratio')) {
+          ratio = +e.target.getAttribute('data-ratio');
+          localStorage.setItem('ratio', +e.target.getAttribute('data-ratio'));
+        } else {
+          sex = e.target.getAttribute('id');
+          localStorage.setItem('sex', e.target.getAttribute('id'));
+        }
+
+        elements.forEach(elem => {
+          elem.classList.remove(activeClass);
+        });
+
+        e.target.classList.add(activeClass);
+
+        calcTotal();
+      });
+    });
+  }
+
+  getStaticInformation('#gender div', 'calculating__choose-item_active');
+  getStaticInformation('.calculating__choose_big div', 'calculating__choose-item_active');
+
+  function getDynamicInformation(selector) {
+    const input = document.querySelector(selector);
+
+    input.addEventListener('input', () => {
+
+      if (input.value.match(/\D/g)) {
+        input.style.border = '1px solid red';
+      } else {
+        input.style.border = 'none';
+      }
+
+      switch (input.getAttribute('id')) {
+        case "height":
+          height = +input.value;
+          break;
+        case "weight":
+          weight = +input.value;
+          break;
+        case "age":
+          age = +input.value;
+          break;
+      }
+
+      calcTotal();
+    });
+  }
+
+  getDynamicInformation('#height');
+  getDynamicInformation('#weight');
+  getDynamicInformation('#age');
 
 });

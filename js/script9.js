@@ -25,6 +25,32 @@
 // const reg = /\d/g;
 // console.log(ans.match(reg));
 
-const str = 'My name is r2d2';
-console.log(str.match(/\w\d\w\d/i));
-console.log(str.match(/\W/i));
+// const str = 'My name is r2d2';
+// console.log(str.match(/\w\d\w\d/i));
+// console.log(str.match(/\W/i));
+
+
+// геттеры и сеттеры
+
+const person = {
+  name: 'alex',
+  age: 25,
+
+  get userAge () {  //создаем геттер
+    return this.age;
+  },
+
+  set userAge (num) { //создание сеттера
+    this.age = num;
+  }
+  //геттер и сеттер идет как пара свойств поэтому имена могут повторяться, если не устанавливать геттер или сеттер то его не будет в нашем доступе
+};
+
+console.log(person.userAge);  //в геттере не ставим круглые скобки, тк геттер предполагает что внутри и
+// так какой-то функционал и он нам позволяет работать с этим методом как с обычным свойством, поэтому это и называется свойство акцессор
+
+console.log(person.userAge = 30);  //используем сеттер
+console.log(person.userAge);
+
+
+

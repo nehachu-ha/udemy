@@ -31,26 +31,111 @@
 
 
 // геттеры и сеттеры
+//
+// const person = {
+//   name: 'alex',
+//   age: 25,
+//
+//   get userAge () {  //создаем геттер
+//     return this.age;
+//   },
+//
+//   set userAge (num) { //создание сеттера
+//     this.age = num;
+//   }
+//   //геттер и сеттер идет как пара свойств поэтому имена могут повторяться, если не устанавливать геттер или сеттер то его не будет в нашем доступе
+// };
+//
+// console.log(person.userAge);  //в геттере не ставим круглые скобки, тк геттер предполагает что внутри и
+// // так какой-то функционал и он нам позволяет работать с этим методом как с обычным свойством, поэтому это и называется свойство акцессор
+//
+// console.log(person.userAge = 30);  //используем сеттер
+// console.log(person.userAge);
 
-const person = {
-  name: 'alex',
-  age: 25,
 
-  get userAge () {  //создаем геттер
-    return this.age;
-  },
 
-  set userAge (num) { //создание сеттера
-    this.age = num;
+
+//инкапсуляция
+
+// function User (name, age) { //функция-конструктор
+//   this.name = name;
+//   let userAge = age;
+//
+//   this.say = function () {
+//     console.log(`Имя пользователя: ${this.name}, возраст: ${userAge}`);
+//   }
+//
+//   this.getAge = function () {
+//     return userAge;
+//   }
+//
+//   this.setAge = function (age) {
+//     if (typeof age === 'number' && age > 0 && age < 110) {
+//       userAge = age;
+//     } else {
+//       console.log('недопустимое значение');
+//     }
+//   }
+// }
+//
+// const ivan = new User('ivan', 25);
+// console.log(ivan.name);
+// // console.log(ivan.userAge);
+// console.log(ivan.getAge());
+// console.log(ivan.setAge('h'));
+//
+// ivan.userAge = 30;
+// ivan.name = 'alex';
+//
+// ivan.say();
+
+
+class User {
+  constructor(name, age) {
+    this.name = name;
+    this._age = age;
   }
-  //геттер и сеттер идет как пара свойств поэтому имена могут повторяться, если не устанавливать геттер или сеттер то его не будет в нашем доступе
-};
 
-console.log(person.userAge);  //в геттере не ставим круглые скобки, тк геттер предполагает что внутри и
-// так какой-то функционал и он нам позволяет работать с этим методом как с обычным свойством, поэтому это и называется свойство акцессор
+  #surname = 'Petrychenko';
 
-console.log(person.userAge = 30);  //используем сеттер
-console.log(person.userAge);
+  say = () => {
+    console.log(`Имя пользователя: ${this.name} ${this.#surname}, возраст ${this._age}`);
+  }
+
+  get age() {
+    return this._age;
+  }
+
+  set age(age) {
+    if (typeof age === 'number' && age > 0 && age < 110) {
+      this._age = age;
+    } else {
+      console.log('Недопустимое значение!');
+    }
+  }
+}
+
+const ivan = new User('ivan', 25);
+console.log(ivan.age);
+ivan.age = 99;
+console.log(ivan.age);
+ivan.say();
+console.log(ivan.surname
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

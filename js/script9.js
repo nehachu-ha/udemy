@@ -53,8 +53,6 @@
 // console.log(person.userAge);
 
 
-
-
 //инкапсуляция
 
 // function User (name, age) { //функция-конструктор
@@ -90,6 +88,7 @@
 // ivan.say();
 
 
+/*
 class User {
   constructor(name, age) {
     this.name = name;
@@ -120,11 +119,32 @@ console.log(ivan.age);
 ivan.age = 99;
 console.log(ivan.age);
 ivan.say();
-console.log(ivan.surname
-);
+console.log(ivan.surname);
+*/
 
 
+// прием Модуль
 
+const number = 1; // записали переменную в глобальную область видимости
+
+(function () {   //анонимная самовызывающаяся функция
+  const number = 2;
+  console.log(number);
+  console.log(number + 3);
+}());
+
+console.log(number);
+
+const user = (function () {
+  const privat = function () {
+    console.log('I am a privat');
+  }
+
+  return {   //используем объектный интерфейс
+    sayHello: privat
+  };
+}());
+user.sayHello();
 
 
 

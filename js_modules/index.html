@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<!--атрибут <script type="module">  который можно применить к тегу script чтобы он попытался использовать скрипты в качестве модулей, для этого должны быть настроены экспорты и импорты-->
+<!--по очереди подключаем файл экспортов, потом импортов-->
+<!--1.обязательно нужно поставить тип модуль
+    2. обязательно в файле экспорта полностью прописывать пути к файлам
+ это не значит что браузер сможет собрать модули, но он может последовательно подключать эти файлы используя импорт/экспорт-->
+<!--эти скрипты работают также если бы мы каждому из них добавляли атрибут defer-->
+<script type="module" src="./js/main.js"></script>
+<script type="module" src="./js/script.js"></script>
+
+</body>

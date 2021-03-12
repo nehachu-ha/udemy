@@ -123,32 +123,51 @@ console.log(ivan.surname);
 */
 
 
-// прием Модуль
-
-const number = 1; // записали переменную в глобальную область видимости
-
-(function () {   //анонимная самовызывающаяся функция
-  const number = 2;
-  console.log(number);
-  console.log(number + 3);
-}());
-
-console.log(number);
-
-const user = (function () {
-  const privat = function () {
-    console.log('I am a privat');
-  }
-
-  return {   //используем объектный интерфейс
-    sayHello: privat
-  };
-}());
-user.sayHello();
-
-
+// // прием Модуль
+//
+// const number = 1; // записали переменную в глобальную область видимости
+//
+// (function () {   //анонимная самовызывающаяся функция
+//   const number = 2;
+//   console.log(number);
+//   console.log(number + 3);
+// }());
+//
+// console.log(number);
+//
+// const user = (function () {
+//   const privat = function () {
+//     console.log('I am a privat');
+//   }
+//
+//   return {   //используем объектный интерфейс
+//     sayHello: privat
+//   };
+// }());
+// user.sayHello();
 
 
+
+// try {
+//   console.log('normal'); //если в этом блоке кода взникает любая ошибка то происходит выполнение кода в блоке catch
+// } catch (e) { //этот блок служит для того чтобы отлавливать ошибки и что-то с ними делать
+//   console.log('error');
+// }
+//код написанный после такой конструкции также продолжит работать
+console.log('still normal');
+
+// в блок catch приходит объект ошибки
+try {
+  console.log('normal');
+  console.log(a);
+} catch (error) {
+  console.log(error); //и к этому объекту идут 3 сущности
+  console.log(error.name); //название ошибки
+  console.log(error.message);
+  console.log(error.stack); // здесь модно увидеть какие функции привели к ошибке
+} finally { // код который находится внутри этого блока выполнится абсолютно всегда, задача этого блока - завершить начатые операции при любщм развитии событий, те эту секцию можно использовать чтобы собщить пользователю что что-то пошло не так
+
+}
 
 
 

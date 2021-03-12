@@ -20,43 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8745993-aad9-41fd-b82b-7b9b8494e9f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js_modules/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_modules/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_modules/js/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js_modules/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/css/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/icons/Group 5.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/icons/facebook.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/icons/instagram.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/icons/left.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/icons/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/icons/right.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/icons/switch.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/icons/veg.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/img/slider/food-12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/img/slider/olive-oil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/img/slider/paprika.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/img/slider/pepper.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/img/spinner.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/img/tabs/elite.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/img/tabs/hamburger.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/img/tabs/post.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/img/tabs/vegy.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/js/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/js/script2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food/Food_dist/server.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loading scripts/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/loading scripts/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project 3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/project 3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/script9.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script9.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,6 +113,7 @@
       <workItem from="1615283849278" duration="25000" />
       <workItem from="1615290677934" duration="1523000" />
       <workItem from="1615362930729" duration="1137000" />
+      <workItem from="1615552394509" duration="1313000" />
     </task>
     <servers />
   </component>
